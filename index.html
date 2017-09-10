@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>BluePost Development</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+
+<link rel="stylesheet" href="css/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/countdown/2.6.0/countdown.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.25.0/js/uikit.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.25.0/js/core/scrollspy.min.js"></script>
+<script>
+/** External Links **/
+
+function externalLinks() { if (!document.getElementsByTagName) return; var anchors = document.getElementsByTagName("a"); for (var i=0; i<anchors.length; i++) { var anchor = anchors[i]; if (anchor.getAttribute("href") && anchor.getAttribute("rel") == "external") anchor.target = "_blank"; } } window.onload = externalLinks;
+
+/** jQuery Easing **/
+
+jQuery.easing.jswing=jQuery.easing.swing;
+jQuery.extend(jQuery.easing,{def:"easeOutQuad",swing:function(e,a,c,b,d){return jQuery.easing[jQuery.easing.def](e,a,c,b,d)},easeInQuad:function(e,a,c,b,d){return b*(a/=d)*a+c},easeOutQuad:function(e,a,c,b,d){return-b*(a/=d)*(a-2)+c},easeInOutQuad:function(e,a,c,b,d){if((a/=d/2)<1)return b/2*a*a+c;return-b/2*(--a*(a-2)-1)+c},easeInCubic:function(e,a,c,b,d){return b*(a/=d)*a*a+c},easeOutCubic:function(e,a,c,b,d){return b*((a=a/d-1)*a*a+1)+c},easeInOutCubic:function(e,a,c,b,d){if((a/=d/2)<1)return b/
+2*a*a*a+c;return b/2*((a-=2)*a*a+2)+c},easeInQuart:function(e,a,c,b,d){return b*(a/=d)*a*a*a+c},easeOutQuart:function(e,a,c,b,d){return-b*((a=a/d-1)*a*a*a-1)+c},easeInOutQuart:function(e,a,c,b,d){if((a/=d/2)<1)return b/2*a*a*a*a+c;return-b/2*((a-=2)*a*a*a-2)+c},easeInQuint:function(e,a,c,b,d){return b*(a/=d)*a*a*a*a+c},easeOutQuint:function(e,a,c,b,d){return b*((a=a/d-1)*a*a*a*a+1)+c},easeInOutQuint:function(e,a,c,b,d){if((a/=d/2)<1)return b/2*a*a*a*a*a+c;return b/2*((a-=2)*a*a*a*a+2)+c},easeInSine:function(e,
+a,c,b,d){return-b*Math.cos(a/d*(Math.PI/2))+b+c},easeOutSine:function(e,a,c,b,d){return b*Math.sin(a/d*(Math.PI/2))+c},easeInOutSine:function(e,a,c,b,d){return-b/2*(Math.cos(Math.PI*a/d)-1)+c},easeInExpo:function(e,a,c,b,d){return a==0?c:b*Math.pow(2,10*(a/d-1))+c},easeOutExpo:function(e,a,c,b,d){return a==d?c+b:b*(-Math.pow(2,-10*a/d)+1)+c},easeInOutExpo:function(e,a,c,b,d){if(a==0)return c;if(a==d)return c+b;if((a/=d/2)<1)return b/2*Math.pow(2,10*(a-1))+c;return b/2*(-Math.pow(2,-10*--a)+2)+c},
+easeInCirc:function(e,a,c,b,d){return-b*(Math.sqrt(1-(a/=d)*a)-1)+c},easeOutCirc:function(e,a,c,b,d){return b*Math.sqrt(1-(a=a/d-1)*a)+c},easeInOutCirc:function(e,a,c,b,d){if((a/=d/2)<1)return-b/2*(Math.sqrt(1-a*a)-1)+c;return b/2*(Math.sqrt(1-(a-=2)*a)+1)+c},easeInElastic:function(e,a,c,b,d){e=1.70158;var f=0,g=b;if(a==0)return c;if((a/=d)==1)return c+b;f||(f=d*0.3);if(g<Math.abs(b)){g=b;e=f/4}else e=f/(2*Math.PI)*Math.asin(b/g);return-(g*Math.pow(2,10*(a-=1))*Math.sin((a*d-e)*2*Math.PI/f))+c},easeOutElastic:function(e,
+a,c,b,d){e=1.70158;var f=0,g=b;if(a==0)return c;if((a/=d)==1)return c+b;f||(f=d*0.3);if(g<Math.abs(b)){g=b;e=f/4}else e=f/(2*Math.PI)*Math.asin(b/g);return g*Math.pow(2,-10*a)*Math.sin((a*d-e)*2*Math.PI/f)+b+c},easeInOutElastic:function(e,a,c,b,d){e=1.70158;var f=0,g=b;if(a==0)return c;if((a/=d/2)==2)return c+b;f||(f=d*0.3*1.5);if(g<Math.abs(b)){g=b;e=f/4}else e=f/(2*Math.PI)*Math.asin(b/g);if(a<1)return-0.5*g*Math.pow(2,10*(a-=1))*Math.sin((a*d-e)*2*Math.PI/f)+c;return g*Math.pow(2,-10*(a-=1))*Math.sin((a*
+d-e)*2*Math.PI/f)*0.5+b+c},easeInBack:function(e,a,c,b,d,f){if(f==undefined)f=1.70158;return b*(a/=d)*a*((f+1)*a-f)+c},easeOutBack:function(e,a,c,b,d,f){if(f==undefined)f=1.70158;return b*((a=a/d-1)*a*((f+1)*a+f)+1)+c},easeInOutBack:function(e,a,c,b,d,f){if(f==undefined)f=1.70158;if((a/=d/2)<1)return b/2*a*a*(((f*=1.525)+1)*a-f)+c;return b/2*((a-=2)*a*(((f*=1.525)+1)*a+f)+2)+c},easeInBounce:function(e,a,c,b,d){return b-jQuery.easing.easeOutBounce(e,d-a,0,b,d)+c},easeOutBounce:function(e,a,c,b,d){return(a/=
+d)<1/2.75?b*7.5625*a*a+c:a<2/2.75?b*(7.5625*(a-=1.5/2.75)*a+0.75)+c:a<2.5/2.75?b*(7.5625*(a-=2.25/2.75)*a+0.9375)+c:b*(7.5625*(a-=2.625/2.75)*a+0.984375)+c},easeInOutBounce:function(e,a,c,b,d){if(a<d/2)return jQuery.easing.easeInBounce(e,a*2,0,b,d)*0.5+c;return jQuery.easing.easeOutBounce(e,a*2-d,0,b,d)*0.5+b*0.5+c}});
+
+/** Scroll **/
+
+$(document).ready(function() {
+	"use strict";
+	$('.backtotop a').bind('click',function(event){
+		var $anchor = $(this);
+		$('html, body').stop().animate({ scrollTop: $($anchor.attr('href')).offset().top }, 500,'easeInOutExpo');
+		event.preventDefault();
+	});
+});
+
+/** Countdown Timer **/
+
+$(document).ready(function() {
+	"use strict";
+
+});
+
+/** Owl Carousel **/
+
+$(window).load(function() {
+	"use strict";
+	$("#commentslider").owlCarousel({
+		autoPlay: false, /** for autoplay - change false to 4000 to auto change every 4 seconds (for example) **/
+		autoHeight: true,
+		stopOnHover: true,
+		navigation: false,
+		navigationText: ["prev","next"],
+		pagination: true,
+		paginationNumbers: false,
+		paginationSpeed: 500,
+		goToFirstSpeed: 500,
+		slideSpeed: 500,
+		rewindSpeed: 500,
+		singleItem: true,
+		lazyLoad: false,
+		transitionStyle: "backSlide" /** fade, backSlide, goDown, fadeUp - Remove whole line for slide transition **/
+	});
+});
+</script>
+<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<body id="backtotop">
+
+<div class="fullwidth clearfix">
+	<div id="topcontainer" class="bodycontainer clearfix" data-uk-scrollspy="{cls:'uk-animation-fade', delay: 300, repeat: true}">
+
+		<img src="img/bp_final_full.png" style="height: 300px;" alt="BluePost Logo" />
+		<!--<h1><span>BluePost</span></h1>
+		<p>Development</p>-->
+
+	</div>
+</div>
+<div class="arrow-separator arrow-white"></div>
+<div class="fullwidth colour1 clearfix">
+	<div id="countdown" class="bodycontainer clearfix" data-uk-scrollspy="{cls:'uk-animation-fade', delay: 300, repeat: true}">
+		<p>From web apps to mobile apps, native programs to entire systems, we develop all sorts of stuff</p>
+	</div>
+</div>
+<div class="arrow-separator arrow-theme"></div>
+<div class="fullwidth colour2 clearfix">
+	<div id="maincont" class="bodycontainer clearfix" data-uk-scrollspy="{cls:'uk-animation-fade', delay: 300, repeat: true}">
+		<p>Founded by <a href="https://www.twitter.com/BithellJames">James Bithell</a> &amp; <a href="https://www.twitter.com/vogonjeltz101">Freddie Poser</a></p>
+		<p>Want to learn more? <strong><a href="http://blog.bluepost.xyz/">Checkout our Blog</a></strong></p>
+		<!--<p>We are currently working on <a href="https://mun.online">iMUN</a> - An Advanced, Web Based, Conference Manager for Model United Nations Conferences.</p>-->
+	</div>
+</div>
+
+<div class="arrow-separator arrow-themelight"></div>
+
+<div class="fullwidth colour3 clearfix">
+	<div id="quotecont" class="bodycontainer clearfix" data-uk-scrollspy="{cls:'uk-animation-fade', delay: 300, repeat: true}">
+		<div id="commentslider" class="owl-carousel">
+			<div class="item">
+				<a href="https://www.imun.co.uk"><img src="img/iMUN_blue_-_trans.png" style="height: 200px;" alt="iMUN Logo" /></a>
+				<p><strong>iMUN is an Advanced, Web Based, Conference Manager for Model United Nations Conferences</strong>
+					<br/>An all in one solution for managing MUN conferences. Integrating delegate, resolution, debate and press management into one it presents a unified experience making the whole process painless</p>
+				<a href="https://www.imun.co.uk" class="author">Website</a>
+			</div>
+			<div class="item">
+				<a href="#"><img src="img/tellystorm.png" style="height: 200px;" alt="TellyStorm Logo" /></a>
+				<p><strong>TellyStorm - The fast free service showing you what to watch from across web based media streaming services.</strong></p>
+				<!--<a href="http://tellystorm.uk/" class="author">Website</a>-->
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="arrow-separator arrow-grey"></div>
+
+<div class="fullwidth clearfix">
+	<div id="footercont" class="bodycontainer clearfix" data-uk-scrollspy="{cls:'uk-animation-fade', delay: 300, repeat: true}">
+
+		<!--<p class="backtotop"><a title="" href="#backtotop"><span class="fa fa-angle-double-up"></span></a></p>-->
+		<div id="socialmedia" class="clearfix">
+			<ul>
+				<li><a href="https://twitter.com/BluePostDev" title="Twitter" target="_blank" rel="external"><span class="fa fa-twitter"></span></a></li>
+				<li><a href="https://github.com/BluePost" title="Github" target="_blank" rel="external"><span class="fa fa-github"></span></a></li>
+				<li><a href="http://blog.bluepost.xyz" title="Blog" target="_blank" rel="external"><span class="fa fa-rss"></span></a></li>
+				<li><a href="https://teamblue.bluepost.xyz/" title="TeamBlue - Staff Extranet" target="_blank" rel="external"><span class="fa fa-flag"></span></a></li>
+			</ul>
+		</div>
+		<p>&copy;2017 James Bithell &amp; Freddie Poser</p>
+	</div>
+</div>
+	<!--JBITHELL.COM FLEET UPTIME TRACKING-->
+	<!--3J7qz26FR84g79pny37vWwhpYw4TB4n6kN5Q9NQtuyHUZ885RA-->
+	<!--END JBITHELL.COM FLEET UPTIME TRACKING-->
+</body>
+</html>
